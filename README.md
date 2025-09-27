@@ -52,7 +52,7 @@ ordens-de-servico/
 ```bash
 mvn clean package
 asadmin deploy --force target/ordens-de-servico.war
-# abrir: http://localhost:8080/os-web/
+# abrir: http://localhost:8080/ordens-de-servico/
 ```
 
 ## DDL (executar como COPEL)
