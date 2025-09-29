@@ -1,0 +1,37 @@
+services:
+  oracle:
+    image: gvenzl/oracle-xe:21-slim
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    environment:
+      ORACLE_PASSWORD: "copel"
+      APP_USER: "COPEL"
+      APP_USER_PASSWORD: "copel"
+      ORACLE_CHARACTERSET: "AL32UTF8"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    restart: unless-stopped
+
+  wildfly:
+    build: .
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    environment:
+      DB_HOST: "oracle"
+      DB_PORT: "1521"
+      DB_SERVICE: "XEPDB1"
+      DB_USER: "COPEL"
+      DB_PASSWORD: "copel"
+      DS_NAME: "CopelDS"
+      JNDI_NAME: "java:/jdbc/CopelDS"
+    volumes:
+      - ./extras:/extras:ro
+    depends_on:
+      - oracle
+    restart: unless-stopped
+
+volumes:
+  oracle-data:
+

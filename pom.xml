@@ -5,13 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.com.copel</groupId>
-  <artifactId>ordens-de-servico-tmp</artifactId>
+  <artifactId>ordens-de-servico</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>ordens-de-servico-tmp Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>ordens-de-servico Maven Webapp</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,7 +24,7 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <!-- APIs do Java EE fornecidas pelo Payara -->
+    <!-- APIs do Java EE fornecidas pelo WildFly -->
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
@@ -37,12 +35,21 @@
 
   <build>
     <finalName>ordens-de-servico</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
+    <plugins>
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-maven-plugin</artifactId>
+        <version>2.1.0.Final</version>
+        <configuration>
+          <id>wildfly-admin</id>
+          <hostname>localhost</hostname>
+          <port>9990</port>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.1.0</version>
+      </plugin>
         <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
@@ -69,6 +76,5 @@
           <version>2.8.2</version>
         </plugin>
       </plugins>
-    </pluginManagement>
   </build>
 </project>

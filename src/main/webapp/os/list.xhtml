@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>Lista de Ordens de Serviço</title>
+</h:head>
+<h:body>
+  <h1>Lista de Ordens de Serviço</h1>
+  
+  <p>Bean accessed. Number of service orders: #{ordemServicoListBean.ordensServico.size()}</p>
+
+  <h:dataTable value="#{ordemServicoListBean.ordensServico}" var="os" border="1">
+    <h:column>
+      <f:facet name="header">ID</f:facet>
+      #{os.id}
+    </h:column>
+    <h:column>
+      <f:facet name="header">Cliente</f:facet>
+      #{os.cliente.nome}
+    </h:column>
+    <h:column>
+      <f:facet name="header">Técnico</f:facet>
+      #{os.tecnico.nome}
+    </h:column>
+    <h:column>
+      <f:facet name="header">Status</f:facet>
+      #{os.status}
+    </h:column>
+    <h:column>
+      <f:facet name="header">Prioridade</f:facet>
+      #{os.prioridade}
+    </h:column>
+  </h:dataTable>
+  
+  <br/>
+  <h:link value="Voltar para Home" outcome="/index.xhtml"/>
+</h:body>
+</html>
