@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Lista de Clientes</title>
+</h:head>
+<h:body>
+    <h1>Lista de Clientes</h1>
+    <h:link value="Voltar para o Início" outcome="/index.xhtml" />
+    <br/><br/>
+    <h:form id="formClienteList">
+        <h:commandButton value="Novo Cliente" action="/form/clienteForm.xhtml?faces-redirect=true"/>
+        <h:dataTable value="#{clienteListBean.clientes}" var="cliente" border="1">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{cliente.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                #{cliente.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">CPF</f:facet>
+                #{cliente.cpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{cliente.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">CEP</f:facet>
+                #{cliente.endereco.cep}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Endereço Completo</f:facet>
+                #{cliente.endereco.enderecoCompleto}
+            </h:column>
+            <h:column>
+                <h:link value="Editar" outcome="/form/clienteForm.xhtml">
+                    <f:param name="id" value="#{cliente.id}"/>
+                </h:link>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Excluir" action="#{clienteListBean.delete(cliente.id)}">
+                    <f:ajax execute="@this" render="@form"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

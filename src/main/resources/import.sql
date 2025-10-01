@@ -7,3 +7,17 @@ INSERT INTO tb_endereco (id, id_cliente, cep, logradouro, numero, bairro, cidade
 INSERT INTO tb_tecnico (id, nome, matricula, telefone) VALUES (1, 'Carlos Alberto', 'T12345', '41977776666');
 
 INSERT INTO tb_ordem_servico (id, id_cliente, id_endereco, id_tecnico, tipo, prioridade, status, dataAbertura) VALUES (1, 1, 1, 1, 'TROCA_MEDIDOR', 'ALTA', 'ABERTA', SYSDATE);
+
+-- Cliente: 2 inserts
+SELECT cliente_seq.NEXTVAL FROM DUAL
+SELECT cliente_seq.NEXTVAL FROM DUAL
+
+-- Endereco: 2 inserts
+SELECT endereco_seq.NEXTVAL FROM DUAL
+SELECT endereco_seq.NEXTVAL FROM DUAL
+
+-- Tecnico: 1 insert
+SELECT tecnico_seq.NEXTVAL FROM DUAL
+
+-- Ordem de Servico: 1 insert
+SELECT ordem_servico_seq.NEXTVAL FROM DUAL

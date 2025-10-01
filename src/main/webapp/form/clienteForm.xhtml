@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Formulário de Cliente</title>
+</h:head>
+<h:body>
+    <f:metadata>
+        <f:viewAction action="#{clienteFormBean.init}"/>
+    </f:metadata>
+    <h1>Formulário de Cliente</h1>
+    <h:link value="&#171; Voltar para a Lista" outcome="/list/clienteList.xhtml" />
+    <br/><br/>
+    <h:form>
+        <h:inputHidden value="#{clienteFormBean.cliente.id}"/>
+        
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <h:panelGrid columns="2">
+                <h:outputLabel for="nome" value="Nome:"/>
+                <h:inputText id="nome" value="#{clienteFormBean.cliente.nome}" required="true"/>
+
+                <h:outputLabel for="cpf" value="CPF:"/>
+                <h:inputText id="cpf" value="#{clienteFormBean.cliente.cpf}" required="true"/>
+
+                <h:outputLabel for="email" value="Email:"/>
+                <h:inputText id="email" value="#{clienteFormBean.cliente.email}" required="true"/>
+
+                <h:outputLabel for="telefone" value="Telefone:"/>
+                <h:inputText id="telefone" value="#{clienteFormBean.cliente.telefone}"/>
+            </h:panelGrid>
+        </fieldset>
+
+        <fieldset>
+            <legend>Endereço</legend>
+            <h:panelGrid columns="2">
+                 <h:outputLabel for="logradouro" value="Logradouro:"/>
+                 <h:inputText id="logradouro" value="#{clienteFormBean.cliente.endereco.logradouro}"/>
+
+                 <h:outputLabel for="numero" value="Número:"/>
+                 <h:inputText id="numero" value="#{clienteFormBean.cliente.endereco.numero}"/>
+
+                 <h:outputLabel for="bairro" value="Bairro:"/>
+                 <h:inputText id="bairro" value="#{clienteFormBean.cliente.endereco.bairro}"/>
+
+                 <h:outputLabel for="cep" value="CEP:"/>
+                 <h:inputText id="cep" value="#{clienteFormBean.cliente.endereco.cep}"/>
+
+                 <h:outputLabel for="cidade" value="Cidade:"/>
+                 <h:inputText id="cidade" value="#{clienteFormBean.cliente.endereco.cidade}"/>
+
+                 <h:outputLabel for="estado" value="Estado:"/>
+                 <h:inputText id="estado" value="#{clienteFormBean.cliente.endereco.estado}"/>
+            </h:panelGrid>
+        </fieldset>
+
+        <h:commandButton value="Salvar" action="#{clienteFormBean.save}"/>
+    </h:form>
+</h:body>
+</html>

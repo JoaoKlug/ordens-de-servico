@@ -1,4 +1,4 @@
-package br.com.copel.os.view;
+package br.com.copel.os.view.list;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,6 +25,11 @@ public class OrdemServicoListBean implements Serializable {
     @PostConstruct
     public void init() {
         ordensServico = ordemServicoService.findAll();
+    }
+
+    public void delete(Long id) {
+        ordemServicoService.delete(id);
+        ordensServico.removeIf(os -> os.getId().equals(id));
     }
 
     public List<OrdemServico> getOrdensServico() {

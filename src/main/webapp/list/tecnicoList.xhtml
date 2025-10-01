@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Lista de Técnicos</title>
+</h:head>
+<h:body>
+    <h1>Lista de Técnicos</h1>
+    <h:link value="Voltar para o Início" outcome="/index.xhtml" />
+    <br/><br/>
+    <h:form id="formTecnicoList">
+        <h:commandButton value="Novo Técnico" action="/form/tecnicoForm.xhtml?faces-redirect=true"/>
+        <h:dataTable value="#{tecnicoListBean.tecnicos}" var="tecnico" border="1">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{tecnico.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                #{tecnico.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Matrícula</f:facet>
+                #{tecnico.matricula}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Telefone</f:facet>
+                #{tecnico.telefone}
+            </h:column>
+            <h:column>
+                <h:link value="Editar" outcome="/form/tecnicoForm.xhtml">
+                    <f:param name="id" value="#{tecnico.id}"/>
+                </h:link>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Excluir" action="#{tecnicoListBean.delete(tecnico.id)}">
+                    <f:ajax execute="@this" render="@form"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

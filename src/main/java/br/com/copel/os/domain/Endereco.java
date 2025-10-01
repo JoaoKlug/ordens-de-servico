@@ -5,9 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tb_endereco")
@@ -18,7 +19,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_seq")
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
@@ -28,6 +29,16 @@ public class Endereco {
     private String cep;
     private String cidade;
     private String estado;
+
+    @Transient
+    public String getEnderecoCompleto() {
+        return String.format("%s %s, %s, %s/%s", 
+            logradouro != null ? logradouro : "", 
+            numero != null ? numero : "", 
+            bairro != null ? bairro : "", 
+            cidade != null ? cidade : "", 
+            estado != null ? estado : "");
+    }
 
     public Long getId() {
         return id;

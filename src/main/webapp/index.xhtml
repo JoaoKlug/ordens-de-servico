@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-<h:head><title>Ordens de Serviço — Home</title></h:head>
+<h:head>
+    <title>Sistema de Ordens de Serviço</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        nav ul { list-style: none; padding: 0; }
+        nav li { margin-bottom: 10px; }
+    </style>
+</h:head>
 <h:body>
-  <h1>Ordens de Serviço — MVP</h1>
-  <h:link value="Ir para OS" outcome="/os/list.xhtml"/>
+    <h1>Sistema de Ordens de Serviço</h1>
+    
+    <p>Bem-vindo! Selecione uma opção para começar:</p>
+
+    <nav>
+        <ul>
+            <li><h:link outcome="/list/clienteList.xhtml" value="Gerenciar Clientes"/></li>
+            <li><h:link outcome="/list/tecnicoList.xhtml" value="Gerenciar Técnicos"/></li>
+            <li><h:link outcome="/list/ordemServicoList.xhtml" value="Gerenciar Ordens de Serviço"/></li>
+        </ul>
+    </nav>
+
 </h:body>
 </html>

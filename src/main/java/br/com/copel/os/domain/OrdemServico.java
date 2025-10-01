@@ -2,7 +2,6 @@ package br.com.copel.os.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,15 +20,15 @@ public class OrdemServico {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ordem_servico_seq")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_tecnico")
     private Tecnico tecnico;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_endereco", nullable = false)
     private Endereco endereco;
 
